@@ -16,12 +16,20 @@ class _UserFirstRowState extends State<UserFirstRow> {
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return CircleAvatar(
-              child: Image.asset(userData[index].imageName),
-            );
+            return Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                    color: userData[index].BackgroundClr,
+                    shape: BoxShape.circle),
+                child: Image.asset(
+                  userData[index].imageName,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
+                ));
           },
           separatorBuilder: (context, index) => SizedBox(
-                width: 10,
+                width: MediaQuery.of(context).size.width * 0.02,
               ),
           itemCount: userData.length),
     );
